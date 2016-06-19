@@ -1,0 +1,19 @@
+{
+  "name": "angular-bundle",
+  "version": "1.0.0",
+  "description": "angular bundle for yii2",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.5.7",
+    "angular-animate": "^1.5.7",
+    "angular-resource": "^1.5.7",
+    "angular-route": "^1.5.7",
+    "angular-sanitize": "^1.5.7",
+    "angular-strap": "^2.3.9"
+  }
+}

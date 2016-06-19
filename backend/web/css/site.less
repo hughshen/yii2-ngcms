@@ -1,0 +1,172 @@
+@black: #000;
+@gray: #ddd;
+@red: #f00;
+@primary-color: #3f51b5;
+@hover-color: @primary-color + 111;
+
+/* Mixin Start */
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-center {
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-end {
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.flex-between {
+    align-items: center;
+    justify-content: space-between;
+}
+
+.none-flex {
+    flex: none;
+}
+
+.border(@pix: 1px, @color: @gray) {
+    border: @pix solid @color;
+}
+
+.border-radius(@pix: 3px) {
+    border-radius: @pix;
+}
+
+.no-list-style {
+    list-style: none;
+    li {
+        list-style: none;
+    }
+}
+
+.no-text-des {
+    text-decoration: none;
+}
+
+.primary-font {
+    font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", "Microsoft Yahei", sans-serif;
+}
+/* Mixin End */
+
+/* Site */
+html, body {
+    .primary-font;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    margin: .5em 0;
+}
+
+.bg-primary {
+    background-color: @primary-color;
+}
+
+.bg-gray {
+    background-color: @gray;
+}
+
+.bg-white {
+    background-color: #fff;
+}
+
+.bg-trans {
+    background-color: transparent;
+}
+
+.color-white {
+    color: #fff;
+}
+
+.btn {
+    .border(0);
+    .border-radius;
+    .bg-trans;
+    .no-text-des;
+    cursor: pointer;
+    font-size: 20px;
+    padding: 5px 15px;
+    outline: none;
+}
+
+.btn-primary {
+    .bg-primary;
+    .color-white;
+}
+
+.btn-disabled {
+    .bg-gray;
+}
+
+.row {
+    .flex-row;
+    width: 100%;
+}
+
+.column {
+    .flex-column;
+    height: 100%;
+}
+
+.page-content {
+    height: 100%;
+}
+
+.menu-list {
+    .no-list-style;
+    margin-right: 40px;
+    li {
+        float: left;
+        a {
+            padding: 5px 10px;
+            .no-text-des;
+            color: @black;
+            &:hover {
+                color: @hover-color;
+            }
+        }
+    }
+}
+
+.login-wrap {
+    .bg-white;
+    .border;
+    padding: 20px 30px;
+    width: 280px;
+    max-width: 280px;
+    h1 {
+        margin: 0;
+    }
+    .form-group {
+        .column;
+        margin: 10px 0;
+        input {
+            .primary-font;
+            .border;
+            .border-radius;
+            padding: .7em;
+            outline: none;
+        }
+        .help-block {
+            margin: 0;
+            color: @red;
+        }
+    }
+    .has-error {
+        input {
+            border-color: @red;
+        }
+    }
+}
