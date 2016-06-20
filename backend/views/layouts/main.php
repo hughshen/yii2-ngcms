@@ -11,18 +11,21 @@ AppAsset::register($this);
     <meta charset="<?= Yii::$app->charset ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
-    <title><?= Html::encode($this->title) ?></title>
+    <title>Yii2 with Angular</title>
     <?php $this->head() ?>
 </head>
 <body ng-controller="MainController" ng-cloak>
 <?php $this->beginBody() ?>
 
-<div class="column">
+<div class="column full-height">
     <header class="row flex-between bg-primary" ng-show="loggedIn()">
         <h2>Yii2 with Angular</h2>
         <ul class="menu-list">
-            <li data-match-route="/$">
+            <li ng-class="{ 'active': menuActive('/')}">
                 <a href="#/">Home</a>
+            </li>
+            <li ng-class="{ 'active': menuActive('/slider') }">
+                <a href="#/slider">Slider</a>
             </li>
             <li ng-click="logout()">
                 <a href="">Logout</a>

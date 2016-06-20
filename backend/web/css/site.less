@@ -3,6 +3,7 @@
 @red: #f00;
 @primary-color: #3f51b5;
 @hover-color: @primary-color + 111;
+@error-color: #d84946;
 
 /* Mixin Start */
 .flex-row {
@@ -30,6 +31,11 @@
     justify-content: space-between;
 }
 
+.flex-around {
+    align-items: center;
+    justify-content: space-around;
+}
+
 .none-flex {
     flex: none;
 }
@@ -53,8 +59,12 @@
     text-decoration: none;
 }
 
+.text-center {
+    text-align: center;
+}
+
 .primary-font {
-    font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", "Microsoft Yahei", sans-serif;
+    font-family: 'Open Sans', sans-serif;
 }
 /* Mixin End */
 
@@ -86,13 +96,17 @@ p {
     background-color: transparent;
 }
 
+.bg-login {
+    background-color: #1c1f27;
+}
+
 .color-white {
     color: #fff;
 }
 
 .btn {
     .border(0);
-    .border-radius;
+    .border-radius(0);
     .bg-trans;
     .no-text-des;
     cursor: pointer;
@@ -110,13 +124,24 @@ p {
     .bg-gray;
 }
 
+.btn-lg {
+    padding: 10px 25px;
+    font-size: 25px;
+}
+
 .row {
     .flex-row;
-    width: 100%;
 }
 
 .column {
     .flex-column;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.full-height {
     height: 100%;
 }
 
@@ -138,6 +163,11 @@ p {
             }
         }
     }
+    li.active {
+        a {
+            color: @hover-color;
+        }
+    }
 }
 
 .login-wrap {
@@ -155,18 +185,18 @@ p {
         input {
             .primary-font;
             .border;
-            .border-radius;
+            .border-radius(0);
             padding: .7em;
             outline: none;
         }
         .help-block {
             margin: 0;
-            color: @red;
+            color: @error-color;
         }
     }
     .has-error {
         input {
-            border-color: @red;
+            border-color: @error-color;
         }
     }
 }

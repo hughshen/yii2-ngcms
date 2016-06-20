@@ -1,0 +1,20 @@
+<div class="column flex-center">
+	<table class="full-width">
+		<thead>
+			<tr>
+				<th>Title</th>
+				<th>Image</th>
+				<th>Status</th>
+				<th>Operate</th>
+			</tr>
+		</thead>
+		<tbody class="text-center">
+			<tr ng-repeat="slider in data">
+				<td>{{ slider.title }}</td>
+				<td><img src="{{ slider.img_url }}"></td>
+				<td>{{ slider.status }}</td>
+				<td>Update</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

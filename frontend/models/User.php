@@ -1,5 +1,5 @@
 <?php
-namespace common\models;
+namespace frontend\models;
 
 use Yii;
 use yii\base\NotSupportedException;
@@ -21,7 +21,7 @@ use yii\web\IdentityInterface;
  * @property integer $updated_at
  * @property string $password write-only password
  */
-class Manager extends ActiveRecord implements IdentityInterface
+class User extends ActiveRecord implements IdentityInterface
 {
     const STATUS_DELETED = 0;
     const STATUS_ACTIVE = 10;
@@ -32,7 +32,7 @@ class Manager extends ActiveRecord implements IdentityInterface
      */
     public static function tableName()
     {
-        return '{{%manager}}';
+        return '{{%user}}';
     }
 
     /**
@@ -69,7 +69,7 @@ class Manager extends ActiveRecord implements IdentityInterface
      */
     public static function findIdentityByAccessToken($token, $type = null)
     {
-        return static::findOne(['auth_key' => $token]);
+        throw new NotSupportedException('"findIdentityByAccessToken" is not implemented.');
     }
 
     /**

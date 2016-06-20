@@ -2,7 +2,8 @@
 namespace backend\controllers;
 
 use Yii;
-use common\models\ManagerForm;
+use common\models\Slider;
+use backend\models\ManagerForm;
 use frontend\models\ContactForm;
 use yii\filters\ContentNegotiator;
 use yii\web\Response;
@@ -62,6 +63,13 @@ class ApiController extends Controller
             'username' => Yii::$app->user->identity->username,
             'access_token' => Yii::$app->user->identity->getAuthKey(),
         ];
+        return $response;
+    }
+
+    public function actionSlider()
+    {
+        $response = Slider::find()->asArray()->all();
+
         return $response;
     }
 

@@ -9,14 +9,19 @@ app.config(['$routeProvider', '$httpProvider',
     function($routeProvider, $httpProvider) {
         $routeProvider.
             when('/', {
-                title: 'Dashboard',
+                pageTitle: 'Dashboard',
                 templateUrl: 'partials/dashboard.html',
                 controller: 'DashboardController'
             }).
             when('/login', {
-                title: 'Login',
+                pageTitle: 'Login',
                 templateUrl: 'partials/login.html',
                 controller: 'LoginController'
+            }).
+            when('/slider', {
+                pageTitle: 'Slider',
+                templateUrl: 'partials/slider.html',
+                controller: 'SliderController'
             }).
             otherwise({
                 templateUrl: 'partials/404.html'
@@ -27,6 +32,9 @@ app.config(['$routeProvider', '$httpProvider',
 
 app.run(['$rootScope', '$location', '$window', function ($rootScope, $location, $window) {
     $rootScope.$on('$routeChangeStart', function (event, next, current) {
+        if (Boolean(next.pageTitle)) {
+            $window.document.title = next.pageTitle;
+        }
         if (!$window.sessionStorage.access_token) {
             $location.path('/login').replace();
         }

@@ -14,7 +14,7 @@ return [
     'modules' => [],
     'components' => [
         'user' => [
-            'identityClass' => 'common\models\Manager',
+            'identityClass' => 'backend\models\Manager',
             'enableSession' => false,
             'loginUrl' => null,
         ],
