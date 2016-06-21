@@ -18,6 +18,11 @@ app.config(['$routeProvider', '$httpProvider',
                 templateUrl: 'partials/login.html',
                 controller: 'LoginController'
             }).
+            when('/signup', {
+                pageTitle: 'Sign Up',
+                templateUrl: 'partials/signup.html',
+                controller: 'SignupController'
+            }).
             when('/slider', {
                 pageTitle: 'Slider',
                 templateUrl: 'partials/slider.html',
@@ -36,7 +41,9 @@ app.run(['$rootScope', '$location', '$window', function ($rootScope, $location, 
             $window.document.title = next.pageTitle;
         }
         if (!$window.sessionStorage.access_token) {
-            $location.path('/login').replace();
+            if (next.originalPath != '/signup') {
+                $location.path('/login').replace();
+            }
         }
     });
 }]);

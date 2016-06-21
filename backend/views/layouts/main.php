@@ -28,7 +28,7 @@ AppAsset::register($this);
                 <a href="#/slider">Slider</a>
             </li>
             <li ng-click="logout()">
-                <a href="">Logout</a>
+                <a href="#">Logout</a>
             </li>
         </ul>
     </header>

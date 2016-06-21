@@ -3,7 +3,9 @@ namespace backend\controllers;
 
 use Yii;
 use common\models\Slider;
+use backend\models\Manager;
 use backend\models\ManagerForm;
+use backend\models\SignupForm;
 use frontend\models\ContactForm;
 use yii\filters\ContentNegotiator;
 use yii\web\Response;
@@ -50,6 +52,18 @@ class ApiController extends Controller
     {
         $model = new ManagerForm();
         if ($model->load(Yii::$app->getRequest()->getBodyParams(), '') && $model->login()) {
+            return ['access_token' => Yii::$app->user->identity->getAuthKey()];
+        } else {
+            $model->validate();
+            return $model;
+        }
+    }
+
+    public function actionSignup()
+    {
+        $model = new SignupForm();
+        if ($model->load(Yii::$app->getRequest()->getBodyParams(), '') && $model->signup()) {
+            Yii::$app->user->login(Manager::findByUsername($model->username), 0);
             return ['access_token' => Yii::$app->user->identity->getAuthKey()];
         } else {
             $model->validate();

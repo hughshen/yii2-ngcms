@@ -80,6 +80,13 @@ p {
     margin: .5em 0;
 }
 
+a {
+    color: @primary-color;
+    &:active, &visited {
+        color: @primary-color;
+    }
+}
+
 .bg-primary {
     background-color: @primary-color;
 }
@@ -199,4 +206,11 @@ p {
             border-color: @error-color;
         }
     }
+}
+
+.signup-wrap {
+    .login-wrap;
+    .text-center;
+    margin-top: 30px;
+    padding: 10px 30px;
 }

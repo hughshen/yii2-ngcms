@@ -72,18 +72,34 @@ controllers.controller('LoginController', ['$scope', '$http', '$window', '$locat
             $scope.submitted = true;
             $scope.doSubmit = true;
             $scope.error = {};
-            $http.post('index.php?r=api/login', $scope.user).success(
-                function(data) {
-                    $window.sessionStorage.access_token = data.access_token;
-                    $location.path('/').replace();
-            }).error(
-                function(data) {
-                    $scope.doSubmit = false;
-                    angular.forEach(data, function(error) {
-                        $scope.error[error.field] = error.message;
-                    });
-                }
-            );
+            $http.post('index.php?r=api/login', $scope.user).success(function(data) {
+                $window.sessionStorage.access_token = data.access_token;
+                $location.path('/').replace();
+            }).error(function(data) {
+                $scope.doSubmit = false;
+                angular.forEach(data, function(error) {
+                    $scope.error[error.field] = error.message;
+                });
+            });
         };
+    }
+]);
+
+controllers.controller('SignupController', ['$scope', '$http', '$window', '$location',
+    function($scope, $http, $window, $location) {
+        $scope.signup = function() {
+            $scope.submitted = true;
+            $scope.doSubmit = true;
+            $scope.error = {};
+            $http.post('index.php?r=api/signup', $scope.user).success(function(data) {
+                $window.sessionStorage.access_token = data.access_token;
+                $location.path('/').replace();
+            }).error(function(data) {
+                $scope.doSubmit = false;
+                angular.forEach(data, function(error) {
+                    $scope.error[error.field] = error.message;
+                });
+            });
+        }
     }
 ]);
