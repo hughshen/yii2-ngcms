@@ -23,7 +23,7 @@ app.config(['$routeProvider', '$httpProvider',
                 templateUrl: 'partials/signup.html',
                 controller: 'SignupController'
             }).
-            when('/slider', {
+            when('/slider/:id?', {
                 pageTitle: 'Slider',
                 templateUrl: 'partials/slider.html',
                 controller: 'SliderController'

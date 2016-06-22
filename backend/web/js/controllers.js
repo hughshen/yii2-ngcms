@@ -58,11 +58,48 @@ controllers.controller('DashboardController', ['$scope', '$http',
     }
 ]);
 
-controllers.controller('SliderController', ['$scope', '$http',
-    function($scope, $http) {
-        $http.get('index.php?r=api/slider').success(function(data) {
-            $scope.data = data;
-        });
+controllers.controller('SliderController', ['$scope', '$http', '$routeParams',
+    function($scope, $http, $routeParams) {
+
+        $scope.sliderApi = 'index.php?r=api/slider';
+        $scope.layout = 'list';
+
+        $scope.slider = {};
+        $scope.slider['link_target'] = '_self';
+        $scope.slider['status'] = '1';
+
+        if (!angular.isUndefined($routeParams.id)) {
+            if ($routeParams.id == 0 || parseInt($routeParams.id)) {
+                $scope.layout = 'edit';
+                if (parseInt($routeParams.id)) {
+                    $http.get('index.php?r=api/slider', {
+                        params: {
+                            id: $routeParams.id,
+                        }
+                    }).success(function(data) {
+                        angular.forEach(data, function(value, index) {
+                            $scope.slider[index] = value + '';
+                        });
+                    });
+                }
+            }
+        } else {
+            $http.get('index.php?r=api/slider').success(function(data) {
+                $scope.data = data;
+            });
+        }
+
+        $scope.pushSlider = function() {
+            $scope.submitted = true;
+            // $scope.doSubmit = true;
+            $scope.error = {};
+            $http.post('index.php?r=api/slider', $scope.slider).success(function(data) {
+                console.log(data);
+            }).error(function(data) {
+                $scope.doSubmit = false;
+                console.log(data);
+            });
+        }
     }
 ]);
 

@@ -82,7 +82,38 @@ class ApiController extends Controller
 
     public function actionSlider()
     {
-        $response = Slider::find()->asArray()->all();
+
+        if (Yii::$app->request->isPost) {
+            $id = Yii::$app->request->post('id');
+            if (($model = Slider::findOne($id)) === null) {
+                $model = new Slider();
+            }
+
+            return new Manager();
+
+            if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+                return $model;
+                $response = [
+                    'flash' => [
+                        'class' => 'success',
+                        'message' => 'Thank you.',
+                    ]
+                ];
+
+                return $response;
+            } else {
+                $model->validate();
+                return $model;
+            }
+        }
+
+        $id = Yii::$app->request->get('id');
+
+        if ($id) {
+            $response = Slider::findOne($id);
+        } else {
+            $response = Slider::find()->all();
+        }
 
         return $response;
     }
