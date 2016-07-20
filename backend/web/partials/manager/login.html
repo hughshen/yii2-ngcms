@@ -1,6 +1,6 @@
-<div class="column flex-center bg-login full-height">
+<div class="flex1 column-center bg-login">
     <div class="login-wrap">
-        <h1 class="row flex-center">Login</h1>
+        <h1 class="row-center">Login</h1>
         <form ng-submit="login()" name="loginForm">
             <div ng-class="{ 'has-success': !error['username'] && submitted,
             'has-error': error['username'] && submitted }" class="form-group">
@@ -14,7 +14,7 @@
                 <p class="help-block" ng-show="error['password']">{{ error['password'] }}</p>
             </div>
 
-            <div class="form-group row flex-center">
+            <div class="form-group row-center">
                 <button type="submit" ng-class="{ 'btn-disabled': doSubmit && submitted }" class="btn btn-primary" ng-disabled="doSubmit">Login</button>
             </div>
         </form>

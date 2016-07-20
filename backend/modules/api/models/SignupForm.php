@@ -1,8 +1,7 @@
 <?php
-namespace backend\models;
+namespace backend\modules\api\models;
 
 use yii\base\Model;
-use backend\models\Manager;
 
 /**
  * Signup form
@@ -22,14 +21,14 @@ class SignupForm extends Model
         return [
             ['username', 'filter', 'filter' => 'trim'],
             ['username', 'required'],
-            ['username', 'unique', 'targetClass' => '\backend\models\Manager', 'message' => 'This username has already been taken.'],
+            ['username', 'unique', 'targetClass' => '\backend\modules\api\models\Manager', 'message' => 'This username has already been taken.'],
             ['username', 'string', 'min' => 2, 'max' => 255],
 
             ['email', 'filter', 'filter' => 'trim'],
             ['email', 'required'],
             ['email', 'email'],
             ['email', 'string', 'max' => 255],
-            ['email', 'unique', 'targetClass' => '\backend\models\Manager', 'message' => 'This email address has already been taken.'],
+            ['email', 'unique', 'targetClass' => '\backend\modules\api\models\Manager', 'message' => 'This email address has already been taken.'],
 
             ['password', 'required'],
             ['password', 'string', 'min' => 6],

@@ -89,16 +89,19 @@ class ApiController extends Controller
                 $model = new Slider();
             }
 
-            return new Manager();
+            if ($model->load(Yii::$app->request->post(), '') && $model->validate()) {
 
-            if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-                return $model;
-                $response = [
-                    'flash' => [
-                        'class' => 'success',
-                        'message' => 'Thank you.',
-                    ]
-                ];
+                if ($model->save()) {
+                    $response = [
+                        'status' => 1,
+                        'message' => 'Save success.'
+                    ];
+                } else {
+                    $response = [
+                        'status' => 0,
+                        'message' => 'Something wrong.'
+                    ];
+                }
 
                 return $response;
             } else {

@@ -2,7 +2,8 @@
 
 var app = angular.module('app', [
     'ngRoute',
-    'controllers'
+    'ngAnimate',
+    'controllers',
 ]);
 
 app.config(['$routeProvider', '$httpProvider',
@@ -10,22 +11,22 @@ app.config(['$routeProvider', '$httpProvider',
         $routeProvider.
             when('/', {
                 pageTitle: 'Dashboard',
-                templateUrl: 'partials/dashboard.html',
+                templateUrl: 'partials/manager/dashboard.html',
                 controller: 'DashboardController'
             }).
             when('/login', {
                 pageTitle: 'Login',
-                templateUrl: 'partials/login.html',
+                templateUrl: 'partials/manager/login.html',
                 controller: 'LoginController'
             }).
             when('/signup', {
                 pageTitle: 'Sign Up',
-                templateUrl: 'partials/signup.html',
+                templateUrl: 'partials/manager/signup.html',
                 controller: 'SignupController'
             }).
             when('/slider/:id?', {
                 pageTitle: 'Slider',
-                templateUrl: 'partials/slider.html',
+                templateUrl: 'partials/slider/slider.html',
                 controller: 'SliderController'
             }).
             otherwise({

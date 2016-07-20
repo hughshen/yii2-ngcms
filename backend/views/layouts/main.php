@@ -17,30 +17,22 @@ AppAsset::register($this);
 <body ng-controller="MainController" ng-cloak>
 <?php $this->beginBody() ?>
 
-<div class="column full-height">
-    <header class="row flex-between bg-primary" ng-show="loggedIn()">
-        <h2>Yii2 with Angular</h2>
-        <ul class="menu-list">
-            <li ng-class="{ 'active': menuActive('/')}">
-                <a href="#/">Home</a>
-            </li>
-            <li ng-class="{ 'active': menuActive('/slider') }">
-                <a href="#/slider">Slider</a>
-            </li>
-            <li ng-click="logout()">
-                <a href="#">Logout</a>
-            </li>
-        </ul>
-    </header>
-
-    <div class="page-content" ng-view></div>
-
+<div class="nav-block" ng-show="loggedIn()">
+    <h2>Yii2 with Angular</h2>
+    <ul class="menu-list">
+        <li ng-class="{ 'active': menuActive('/')}">
+            <a href="#/">Home</a>
+        </li>
+        <li ng-class="{ 'active': menuActive('/slider') }">
+            <a href="#/slider">Slider</a>
+        </li>
+        <li ng-click="logout()">
+            <a href="#">Logout</a>
+        </li>
+    </ul>
 </div>
 
-<footer ng-show="loggedIn()">
-    <p>&copy; My Company <?= date('Y') ?></p>
-    <p><?= Yii::powered() ?></p>
-</footer>
+<div ng-class="{ 'content-block': loggedIn() }" class="flex1 column" ng-view></div>
 
 <?php $this->endBody() ?>
 </body>

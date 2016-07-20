@@ -1,0 +1,69 @@
+<div class="flex1 column">
+	<div class="card-block" ng-show="layout == 'list'">
+		<div class="card-head">Slider Config</div>
+		<div class="card-body">
+			<!-- <P><a href="#/slider/0" class="btn btn-primary flex0">New</a></P> -->
+			<table class="full-width">
+				<thead>
+					<tr>
+						<th>Title</th>
+						<th>Image</th>
+						<th>Status</th>
+						<th>Operate</th>
+					</tr>
+				</thead>
+				<tbody class="text-center">
+					<tr ng-repeat="slider in data">
+						<td>{{ slider.title }}</td>
+						<td><img src="{{ slider.img_url }}"></td>
+						<td>{{ slider.status }}</td>
+						<td><a href="#/slider/{{ slider.id }}">Update</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="card-block" ng-show="layout == 'edit'">
+		<div class="card-head">Edit Slider</div>
+		<div class="card-body">
+			<form ng-submit="pushSlider()" name="sliderForm" class="flex1">
+				<div class="form-group">
+					<label>Title</label>
+					<input type="text" ng-model="slider.title" id="title" placeholder="Title" class="form-control">
+					<p class="help-block"></p>
+				</div>
+				<div class="form-group">
+					<textarea ng-model="slider.caption" id="caption" placeholder="Caption" class="form-control" rows="5"></textarea>
+				</div>
+				<div class="form-group">
+					<input type="text" ng-model="slider.img_url" id="img_url" placeholder="Image Url" class="form-control">
+					<p class="help-block"></p>
+				</div>
+				<div class="form-group">
+					<input type="text" ng-model="slider.link_url" id="link_url" placeholder="Link Url" class="form-control">
+					<p class="help-block"></p>
+				</div>
+				<div class="form-group">
+					<select ng-model="slider.link_target" class="form-control">
+						<option value="_self">Parent</option>
+						<option value="_blank">New Window</option>
+					</select>
+					<p class="help-block"></p>
+				</div>
+				<div class="form-group">
+					<input type="text" ng-model="slider.ordering" id="ordering" placeholder="Ordering" class="form-control">
+					<p class="help-block"></p>
+				</div>
+				<div class="form-group">
+					<select ng-model="slider.status" class="form-control">
+						<option value="0">Inactive</option>
+						<option value="1">Active</option>
+					</select>
+				</div>
+				<div class="form-group row-center">
+	                <button type="submit" ng-class="{ 'btn-disabled': doSubmit && submitted }" class="btn btn-primary" ng-disabled="doSubmit">Update</button>
+	            </div>
+			</form>
+		</div>
+	</div>
+</div>

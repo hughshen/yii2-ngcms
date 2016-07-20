@@ -1,10 +1,10 @@
 <?php
-
-namespace backend\models;
+namespace backend\modules\api\models;
 
 use Yii;
+use yii\db\ActiveRecord;
 
-class Slider extends \yii\db\ActiveRecord
+class Slider extends ActiveRecord
 {
     public $file;
 

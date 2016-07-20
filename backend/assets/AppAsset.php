@@ -12,7 +12,7 @@ class AppAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        'css/site.css',
+        'css/site.min.css',
     ];
     public $js = [
         'js/app.js',
@@ -30,6 +30,7 @@ class AppAsset extends AssetBundle
         parent::init();
         if (defined('YII_ENV') && YII_ENV == 'dev') {
             array_push($this->js, 'js/less.min.js');
+            $this->css = [];
         }
     }
 

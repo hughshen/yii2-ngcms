@@ -52,7 +52,7 @@ controllers.controller('ContactController', ['$scope', '$http', '$window',
 
 controllers.controller('DashboardController', ['$scope', '$http',
     function($scope, $http) {
-        $http.get('index.php?r=api/dashboard').success(function(data) {
+        $http.get('index.php?r=api/manager/dashboard').success(function(data) {
            $scope.data = data;
         })
     }
@@ -65,7 +65,9 @@ controllers.controller('SliderController', ['$scope', '$http', '$routeParams',
         $scope.layout = 'list';
 
         $scope.slider = {};
+        $scope.slider['link_url'] = '';
         $scope.slider['link_target'] = '_self';
+        $scope.slider['img_url'] = '';
         $scope.slider['status'] = '1';
 
         if (!angular.isUndefined($routeParams.id)) {
@@ -85,6 +87,7 @@ controllers.controller('SliderController', ['$scope', '$http', '$routeParams',
             }
         } else {
             $http.get('index.php?r=api/slider').success(function(data) {
+                console.log(data);
                 $scope.data = data;
             });
         }
@@ -109,7 +112,7 @@ controllers.controller('LoginController', ['$scope', '$http', '$window', '$locat
             $scope.submitted = true;
             $scope.doSubmit = true;
             $scope.error = {};
-            $http.post('index.php?r=api/login', $scope.user).success(function(data) {
+            $http.post('index.php?r=api/manager/login', $scope.user).success(function(data) {
                 $window.sessionStorage.access_token = data.access_token;
                 $location.path('/').replace();
             }).error(function(data) {
@@ -128,7 +131,7 @@ controllers.controller('SignupController', ['$scope', '$http', '$window', '$loca
             $scope.submitted = true;
             $scope.doSubmit = true;
             $scope.error = {};
-            $http.post('index.php?r=api/signup', $scope.user).success(function(data) {
+            $http.post('index.php?r=api/manager/signup', $scope.user).success(function(data) {
                 $window.sessionStorage.access_token = data.access_token;
                 $location.path('/').replace();
             }).error(function(data) {
