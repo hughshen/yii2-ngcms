@@ -18,7 +18,7 @@ return [
     ],
     'components' => [
         'user' => [
-            'identityClass' => 'backend\models\Manager',
+            'identityClass' => 'backend\modules\api\models\Manager',
             'enableSession' => false,
             'loginUrl' => null,
         ],
