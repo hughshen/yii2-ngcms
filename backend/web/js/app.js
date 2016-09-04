@@ -26,8 +26,13 @@ app.config(['$routeProvider', '$httpProvider',
             }).
             when('/slider/:id?', {
                 pageTitle: 'Slider',
-                templateUrl: 'partials/slider/slider.html',
+                templateUrl: 'partials/dashboard/slider.html',
                 controller: 'SliderController'
+            }).
+            when('/media', {
+                pageTitle: 'Media',
+                templateUrl: 'partials/dashboard/media.html',
+                controller: 'MediaController'
             }).
             otherwise({
                 templateUrl: 'partials/404.html'

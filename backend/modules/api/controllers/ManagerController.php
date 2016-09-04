@@ -11,9 +11,6 @@ use backend\modules\api\models\Manager;
 use backend\modules\api\models\ManagerForm;
 use backend\modules\api\models\SignupForm;
 
-/**
- * Site controller
- */
 class ManagerController extends Controller
 {
     /**

@@ -7,9 +7,9 @@ use yii\web\Response;
 use yii\filters\AccessControl;
 use yii\rest\Controller;
 use yii\filters\auth\HttpBearerAuth;
-use backend\modules\api\models\Slider;
+use backend\modules\api\models\Media;
 
-class SliderController extends Controller
+class MediaController extends Controller
 {
     /**
      * @inheritdoc
@@ -45,39 +45,12 @@ class SliderController extends Controller
     {
 
         if (Yii::$app->request->isPost) {
-            $id = Yii::$app->request->post('id');
-            if (($model = Slider::findOne($id)) === null) {
-                $model = new Slider();
-            }
-
-            if ($model->load(Yii::$app->request->post(), '') && $model->validate()) {
-
-                if ($model->save()) {
-                    $response = [
-                        'status' => 1,
-                        'message' => 'Save success.'
-                    ];
-                } else {
-                    $response = [
-                        'status' => 0,
-                        'message' => 'Something wrong.'
-                    ];
-                }
-
-                return $response;
-            } else {
-                $model->validate();
-                return $model;
-            }
+            
         }
 
-        $id = Yii::$app->request->get('id');
-
-        if ($id) {
-            $response = Slider::findOne($id);
-        } else {
-            $response = Slider::find()->all();
-        }
+        $response = Media::find()
+            ->orderBy('id DESC')
+            ->all();
 
         return $response;
     }

@@ -287,6 +287,9 @@ a {
 .btn-primary {
     .bg-primary;
     .color-white;
+    &:active, &visited {
+        color: @white;
+    }
 }
 
 .btn-disabled {
@@ -428,4 +431,8 @@ a {
             }
         }
     }
+}
+
+.upload-form-group {
+    margin-bottom: 1rem;
 }

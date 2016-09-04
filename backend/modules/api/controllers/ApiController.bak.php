@@ -13,9 +13,6 @@ use yii\filters\AccessControl;
 use yii\rest\Controller;
 use yii\filters\auth\HttpBearerAuth;
 
-/**
- * Site controller
- */
 class ApiController extends Controller
 {
     /**

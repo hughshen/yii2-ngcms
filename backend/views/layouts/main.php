@@ -23,6 +23,9 @@ AppAsset::register($this);
         <li ng-class="{ 'active': menuActive('/')}">
             <a href="#/">Home</a>
         </li>
+        <li ng-class="{ 'active': menuActive('/media') }">
+            <a href="#/media">Media</a>
+        </li>
         <li ng-class="{ 'active': menuActive('/slider') }">
             <a href="#/slider">Slider</a>
         </li>
