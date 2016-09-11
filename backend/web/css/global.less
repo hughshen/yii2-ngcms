@@ -1,0 +1,115 @@
+/* Global */
+.m0 {margin: 0;}
+.p0 {padding: 0;}
+.b0 {border: 0;}
+.br0 {border-radius: 0;}
+.w100 {width: 100%;}
+.h100 {height: 100%;}
+.mw100 {min-width: 100%;}
+.mh100 {min-height: 100%;}
+.tc {text-align: center;}
+.tl {text-align: left;}
+.tr {text-align: right;}
+.f12 {font-size: 12px;}
+.f13 {font-size: 13px;}
+.f14 {font-size: 14px;}
+.f15 {font-size: 15px;}
+.f16 {font-size: 16px;}
+.f17 {font-size: 17px;}
+.f18 {font-size: 18px;}
+.f19 {font-size: 19px;}
+.f20 {font-size: 20px;}
+
+/* Reset */
+html, body, div, span, h1, h2, h3, h4, h5, h6, p, a, img, strong, small, blockquote, pre, object, iframe, audio, video, time, address, code, del, ins, sub, sup, tt, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, figure, footer, header, menu, nav, section {
+    .m0;
+    .p0;
+    .b0;
+    font: inherit;
+    font-size: 100%;
+    vertical-align: baseline;
+}
+header, footer, section, menu, nav, article, aside, figure {
+    display: block;
+}
+ol, ul {
+    list-style: none;
+}
+table {
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+/* Animate */
+.transition(@attr: all, @type: ease, @time: .5s) {
+    -moz-transition: @attr @type @time;
+    -webkit-transition: @attr @type @time;
+    -ms-transition: @attr @type @time;
+    -o-transition: @attr @type @time;
+    transition: @attr @type @time;
+}
+.transform(@val) {
+    -webkit-transform: @val;
+    -ms-transform: @val;
+    transform: @val;
+}
+.animation(@key, @time: .5s) {
+    -webkit-animation: @key @time;
+    -moz-animation: @key @time;
+    -o-animation: @key @time;
+    animation: @key @time;
+}
+
+/* Flex */
+.flex {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+}
+.row {
+    .flex;
+    flex-direction: row;
+}
+.column {
+    .flex;
+    flex-direction: column;
+}
+.flex-center {
+    align-items: center;
+    justify-content: center;
+}
+.row-center {
+    .row;
+    .flex-center;
+}
+.column-center {
+    .column;
+    .flex-center;
+}
+.flex-end {
+    align-items: center;
+    justify-content: flex-end;
+}
+.flex-between {
+    align-items: center;
+    justify-content: space-between;
+}
+.flex-around {
+    align-items: center;
+    justify-content: space-around;
+}
+.item-flex(@grow: 0, @shrink: 1, @basis: auto) {
+    -webkit-box-flex: @grow @shrink @basis;
+    -moz-box-flex: @grow @shrink @basis;
+    -webkit-flex: @grow @shrink @basis;
+    -ms-flex: @grow @shrink @basis;
+    flex: @grow @shrink @basis;
+}
+.flex0 {
+    .item-flex(0);
+}
+.flex1 {
+    .item-flex(1);
+}
