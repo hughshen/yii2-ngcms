@@ -17,25 +17,25 @@ AppAsset::register($this);
 <body ng-controller="MainController" ng-cloak>
 <?php $this->beginBody() ?>
 
-<div class="nav-block" ng-show="loggedIn()">
-    <h2>Yii2 with Angular</h2>
-    <ul class="menu-list">
-        <li ng-class="{ 'active': menuActive('/')}">
-            <a href="#/">Home</a>
-        </li>
-        <li ng-class="{ 'active': menuActive('/media') }">
-            <a href="#/media">Media</a>
-        </li>
-        <li ng-class="{ 'active': menuActive('/slider') }">
-            <a href="#/slider">Slider</a>
-        </li>
-        <li ng-click="logout()">
-            <a href="#">Logout</a>
-        </li>
-    </ul>
-</div>
+    <div class="nav-wrap" ng-show="loggedIn()">
+        <h2>Yii2 with Angular</h2>
+        <ul class="menu-list">
+            <li ng-class="{ 'active': menuActive('/')}">
+                <a href="#/">Home</a>
+            </li>
+            <li ng-class="{ 'active': menuActive('/media') }">
+                <a href="#/media">Media</a>
+            </li>
+            <li ng-class="{ 'active': menuActive('/slider') }">
+                <a href="#/slider">Slider</a>
+            </li>
+            <li ng-click="logout()">
+                <a href="#">Logout</a>
+            </li>
+        </ul>
+    </div>
 
-<div ng-class="{ 'content-block': loggedIn() }" class="flex1 column" ng-view></div>
+    <div ng-class="{ 'content-with-nav': loggedIn(), 'content-with-form': !loggedIn() }" class="content-wrap" ng-view></div>
 
 <?php $this->endBody() ?>
 </body>

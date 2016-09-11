@@ -1,241 +1,11 @@
-@black: #000;
-@white: #fff;
-@gray: #ddd;
-@red: #f00;
-@primary-color: #3ca2e0;
-@hover-color: @primary-color + 111;
-@error-color: #d84946;
-@card-head-color: #2c3e50;
-
-/* Mixin Start */
-.flex {
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-}
-
-.row {
-    .flex;
-    flex-direction: row;
-}
-
-.column {
-    .flex;
-    flex-direction: column;
-}
-
-.flex-center {
-    align-items: center;
-    justify-content: center;
-}
-
-.row-center {
-    .row;
-    .flex-center;
-}
-
-.column-center {
-    .column;
-    .flex-center;
-}
-
-.flex-end {
-    align-items: center;
-    justify-content: flex-end;
-}
-
-.flex-between {
-    align-items: center;
-    justify-content: space-between;
-}
-
-.flex-around {
-    align-items: center;
-    justify-content: space-around;
-}
-
-.item-flex(@grow: 0, @shrink: 1, @basis: auto) {
-    -webkit-box-flex: @grow @shrink @basis;
-    -moz-box-flex: @grow @shrink @basis;
-    -webkit-flex: @grow @shrink @basis;
-    -ms-flex: @grow @shrink @basis;
-    flex: @grow @shrink @basis;
-}
-
-.flex0 {
-    .item-flex(0);
-}
-
-.flex1 {
-    .item-flex(1);
-}
-
-.border(@pix: 1px, @color: @gray) {
-    border: @pix solid @color;
-}
-
-.border-radius(@pix: 3px) {
-    border-radius: @pix;
-}
-
-.no-list-style {
-    list-style: none;
-    li {
-        list-style: none;
-    }
-}
-
-.no-text-des {
-    text-decoration: none;
-}
-
-.text-center {
-    text-align: center;
-}
-
-.primary-font {
-    font-family: 'Open Sans', sans-serif;
-}
-
-.width(@w: 0) {
-    width: @w;
-}
-
-.min-width(@w: 0) {
-    min-width: @w;
-}
-
-.height(@h: 0) {
-    height: @h;
-}
-
-.min-height(@h: 0) {
-    min-height: @h;
-}
-
-.transition(@attr: all, @type: ease, @time: .5s) {
-    -moz-transition: @attr @type @time;
-    -webkit-transition: @attr @type @time;
-    -ms-transition: @attr @type @time;
-    -o-transition: @attr @type @time;
-    transition: @attr @type @time;
-}
-
-.transform(@val) {
-    -webkit-transform: @val;
-    -ms-transform: @val;
-    transform: @val;
-}
-
-.animation(@key, @time: .5s) {
-    -webkit-animation: @key @time;
-    -moz-animation: @key @time;
-    -o-animation: @key @time;
-    animation: @key @time;
-}
-
-.scale-show {
-    @keyframes scale-show {
-        0% {
-            .transform(scale(0));
-        }
-        100% {
-            .transform(scale(1));
-        }
-    }
-
-    @-moz-keyframes scale-show {
-        0% {
-            .transform(scale(0));
-        }
-        100% {
-            .transform(scale(1));
-        }
-    }
-
-    @-webkit-keyframes scale-show {
-        0% {
-            .transform(scale(0));
-        }
-        100% {
-            .transform(scale(1));
-        }
-    }
-
-    @-o-keyframes scale-show {
-        0% {
-            .transform(scale(0));
-        }
-        100% {
-            .transform(scale(1));
-        }
-    }
-}
-
-.scale-hide {
-    @keyframes scale-hide {
-        0% {
-            .transform(scale(1));
-        }
-        25% {
-            .transform(scale(0.75));
-        }
-        100% {
-            .transform(scale(0));
-        }
-    }
-
-    @-moz-keyframes scale-hide {
-        0% {
-            .transform(scale(1));
-        }
-        25% {
-            .transform(scale(0.75));
-        }
-        100% {
-            .transform(scale(0));
-        }
-    }
-
-    @-webkit-keyframes scale-hide {
-        0% {
-            .transform(scale(1));
-        }
-        25% {
-            .transform(scale(0.75));
-        }
-        100% {
-            .transform(scale(0));
-        }
-    }
-
-    @-o-keyframes scale-hide {
-        0% {
-            .transform(scale(1));
-        }
-        25% {
-            .transform(scale(0.75));
-        }
-        100% {
-            .transform(scale(0));
-        }
-    }
-}
-
-/* Mixin End */
+@import 'variables.less';
+@import 'global.less';
+@import 'keyframes.less';
 
 /* Site */
 html, body {
-    .min-height(100vh);
-    .primary-font;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    .row;
+    .h100;
+    font-family: 'Open Sans', sans-serif;
 }
 
 p {
@@ -244,9 +14,18 @@ p {
 
 a {
     color: @primary-color;
-    &:active, &visited {
+    text-decoration: none;
+    &:active, &:visited {
         color: @primary-color;
     }
+}
+
+.white {
+    color: @white;
+}
+
+.black {
+    color: @black;
 }
 
 .bg-primary {
@@ -258,42 +37,30 @@ a {
 }
 
 .bg-white {
-    background-color: #fff;
+    background-color: @white;
 }
 
 .bg-trans {
     background-color: transparent;
 }
 
-.bg-login {
-    background-color: #1c1f27;
-}
-
-.color-white {
-    color: #fff;
-}
-
 .btn {
-    .border(0);
-    .border-radius(0);
+    .f20;
     .bg-trans;
-    .no-text-des;
+    border: 0;
+    border-radius: 0;
     cursor: pointer;
-    font-size: 20px;
     padding: 5px 15px;
     outline: none;
+    text-decoration: none;
 }
 
 .btn-primary {
+    .white;
     .bg-primary;
-    .color-white;
-    &:active, &visited {
-        color: @white;
+    &:active, &:visited {
+        .white;
     }
-}
-
-.btn-disabled {
-    .bg-gray;
 }
 
 .btn-lg {
@@ -301,47 +68,49 @@ a {
     font-size: 25px;
 }
 
-.full-width {
-    .width(100%);
+.btn-disabled {
+    .bg-gray;
 }
 
-.min-full-width {
-    .min-width(100%);
+.full-width, .min-full-width {
+    .w100;
 }
 
-.full-height {
-    .height(100%);
-}
-
-.min-full-height {
-    .min-height(100%);
+.full-height, .min-full-height {
+    .h100;
 }
 
 .ng-enter {
     .animation(scale-show);
 }
 
-.nav-block {
-    .column;
-    .flex-between;
+.content-wrap {
+    .h100;
+    position: relative;
+}
+
+.nav-wrap {
+    .h100;
     .bg-primary;
     width: 235px;
+    max-width: 235px;
+    float: left;
     h2 {
-        .item-flex(1);
+        .f20;
         color: hsla(0, 0%, 100%, .6);
+        margin: 2rem 0 7rem 1.5rem;
     }
     .menu-list {
-        .item-flex(3);
-        .no-list-style;
-        .column;
-        width: 100%;
-        padding: 0;
+        .w100;
         li {
+            .transition;
             a {
-                .no-text-des;
+                .white;
                 display: block;
                 padding: .6rem 0 .6rem 2rem;
-                color: @white;
+            }
+            &:hover {
+                background: darken(@primary-color, 3%);
             }
         }
         li.active {
@@ -350,32 +119,45 @@ a {
     }
 }
 
-.content-block {
+.content-with-nav {
+    .box-sizing;
     background: lighten(@gray, 7%);
     padding: 3rem 2rem;
+    margin-left: 235px;
 }
 
-.login-wrap {
+.content-with-form {
+    background: #1c1f27;
+}
+
+.manager-form {
     .bg-white;
-    .border;
+    .maxw100;
+    .transform(translate(-50%, -50%));
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border: 1px solid @gray;
     padding: 20px 30px;
     width: 280px;
-    max-width: 280px;
     h1 {
-        margin: 0;
+        .m0;
+        .tc;
+        .f20;
+        .bold;
     }
     .form-group {
-        .column;
         margin: 10px 0;
         input {
-            .primary-font;
-            .border;
-            .border-radius(0);
+            .w100;
+            .br0;
+            .box-sizing;
+            border: 1px solid @gray;
             padding: .7em;
             outline: none;
         }
         .help-block {
-            margin: 0;
+            .m0;
             color: @error-color;
         }
     }
@@ -384,20 +166,18 @@ a {
             border-color: @error-color;
         }
     }
-}
-
-.signup-wrap {
-    .login-wrap;
-    .text-center;
-    margin-top: 30px;
-    padding: 10px 30px;
+    .message-wrap {
+        .tc;
+        margin-top: 30px;
+        padding: 10px 30px;
+    }
 }
 
 .card-block {
     .column;
     .card-head {
+        .white;
         background: @card-head-color;
-        color: @white;
         padding: .5rem 1rem;
         font-size: 2rem;
     }
@@ -414,7 +194,7 @@ a {
                     margin-bottom: .5rem;
                 }
                 .form-control {
-                    .border(1px, #ccc);
+                    border: 1px solid #ccc;
                     display: block;
                     color: darken(@gray, 50%);
                     font-size: .875rem;
@@ -425,7 +205,7 @@ a {
                     background-color: @white;
                     background-image: none;
                     option {
-                        color: @black;
+                        .black;
                     }
                 }
             }

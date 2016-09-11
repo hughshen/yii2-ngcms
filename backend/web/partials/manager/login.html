@@ -1,26 +1,23 @@
-<div class="flex1 column-center bg-login">
-    <div class="login-wrap">
-        <h1 class="row-center">Login</h1>
-        <form ng-submit="login()" name="loginForm">
-            <div ng-class="{ 'has-success': !error['username'] && submitted,
-            'has-error': error['username'] && submitted }" class="form-group">
-                <input type="text" ng-model="user.username" id="username" placeholder="Username">
-                <p class="help-block" ng-show="error['username']">{{ error['username'] }}</p>
-            </div>
+<div class="manager-form">
+    <h1>Login</h1>
+    <form ng-submit="login()" name="loginForm">
+        <div ng-class="{ 'has-success': !error['username'] && submitted,
+        'has-error': error['username'] && submitted }" class="form-group">
+            <input type="text" ng-model="user.username" id="username" placeholder="Username">
+            <p class="help-block" ng-show="error['username']">{{ error['username'] }}</p>
+        </div>
 
-            <div ng-class="{ 'has-success': !error['password'] && submitted,
-            'has-error': error['password'] && submitted }" class="form-group">
-                <input type="password" ng-model="user.password" id="password" placeholder="Password">
-                <p class="help-block" ng-show="error['password']">{{ error['password'] }}</p>
-            </div>
+        <div ng-class="{ 'has-success': !error['password'] && submitted,
+        'has-error': error['password'] && submitted }" class="form-group">
+            <input type="password" ng-model="user.password" id="password" placeholder="Password">
+            <p class="help-block" ng-show="error['password']">{{ error['password'] }}</p>
+        </div>
 
-            <div class="form-group row-center">
-                <button type="submit" ng-class="{ 'btn-disabled': doSubmit && submitted }" class="btn btn-primary" ng-disabled="doSubmit">Login</button>
-            </div>
-        </form>
-    </div>
-    <div class="signup-wrap">
+        <div class="form-group tc">
+            <button type="submit" ng-class="{ 'btn-disabled': doSubmit && submitted }" class="btn btn-primary" ng-disabled="doSubmit">Login</button>
+        </div>
+    </form>
+    <div class="message-wrap">
         New? <a href="#/signup">Sign Up</a>
     </div>
 </div>
-
