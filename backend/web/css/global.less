@@ -5,8 +5,10 @@
 .br0 {border-radius: 0;}
 .w100 {width: 100%;}
 .h100 {height: 100%;}
-.mw100 {min-width: 100%;}
-.mh100 {min-height: 100%;}
+.minw100 {min-width: 100%;}
+.maxw100 {max-width: 100%;}
+.minh100 {min-height: 100%;}
+.maxh100 {max-height: 100%;}
 .tc {text-align: center;}
 .tl {text-align: left;}
 .tr {text-align: right;}
@@ -19,6 +21,7 @@
 .f18 {font-size: 18px;}
 .f19 {font-size: 19px;}
 .f20 {font-size: 20px;}
+.bold {font-weight: bold;}
 
 /* Reset */
 html, body, div, span, h1, h2, h3, h4, h5, h6, p, a, img, strong, small, blockquote, pre, object, iframe, audio, video, time, address, code, del, ins, sub, sup, tt, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, figure, footer, header, menu, nav, section {
@@ -41,23 +44,38 @@ table {
 }
 
 /* Animate */
-.transition(@attr: all, @type: ease, @time: .5s) {
-    -moz-transition: @attr @type @time;
-    -webkit-transition: @attr @type @time;
-    -ms-transition: @attr @type @time;
-    -o-transition: @attr @type @time;
-    transition: @attr @type @time;
+.transition(@attr: all, @time: .3s, @type: ease) {
+    -webkit-transition: @attr @time @type;
+    -moz-transition: @attr @time @type;
+    -ms-transition: @attr @time @type;
+    -o-transition: @attr @time @type;
+    transition: @attr @time @type;
 }
-.transform(@val) {
-    -webkit-transform: @val;
-    -ms-transform: @val;
-    transform: @val;
+.transform(@value) {
+    -webkit-transform: @value;
+    -moz-transform: @value;
+    -ms-transform: @value;
+    -o-transform: @value;
+    transform: @value;
 }
 .animation(@key, @time: .5s) {
     -webkit-animation: @key @time;
     -moz-animation: @key @time;
     -o-animation: @key @time;
     animation: @key @time;
+}
+.box-shadow(@horizontal: 1px, @vertical: 1px, @blur: 1px, @spread: 1px, @color: #000) {
+    -webkit-box-shadow: @horizontal @vertical @blur @spread @color;
+    box-shadow: @horizontal @vertical @blur @spread @color;
+}
+.box-shadow-inset(@horizontal: 1px, @vertical: 1px, @blur: 1px, @spread: 1px, @color: #000) {
+    -webkit-box-shadow: inset @horizontal @vertical @blur @spread @color;
+    box-shadow: inset @horizontal @vertical @blur @spread @color;
+}
+.box-sizing(@value: border-box) {
+    -webkit-box-sizing: @value;
+    -moz-box-sizing: @value;
+    box-sizing: @value;
 }
 
 /* Flex */
