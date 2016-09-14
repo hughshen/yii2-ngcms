@@ -3,6 +3,7 @@ namespace backend\modules\api\models;
 
 use Yii;
 use yii\db\ActiveRecord;
+use yii\web\UploadedFile;
 
 class Media extends ActiveRecord
 {
@@ -16,7 +17,7 @@ class Media extends ActiveRecord
     public function rules()
     {
         return [
-            
+            ['file', 'file', 'skipOnEmpty' => false, 'extensions' => ['png', 'jpg']],
         ];
     }
 }

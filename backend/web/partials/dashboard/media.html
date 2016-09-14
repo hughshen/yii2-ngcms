@@ -1,12 +1,13 @@
-<div class="flex1 column">
+<div class="column">
 	<div class="card-block">
 		<div class="card-head">Media Manager</div>
 		<div class="card-body">
 			<div class="upload-form-group">
-				<input type="file" file-model="file"/>
+				<input type="file" file-model="mediaFile"/>
 				<button ng-click="uploadFile()" class="btn btn-primary">Upload</button>
+				<div class="message">{{ uploadMessage }}</div>
 			</div>
-			<table class="full-width">
+			<table class="full-width center-table">
 				<thead>
 					<tr>
 						<th>ID</th>
@@ -15,9 +16,9 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="meida in data">
+					<tr ng-repeat="media in data">
 						<td>{{ media.id }}</td>
-						<td><img src="{{ media.path }}"></td>
+						<td><img ng-src="/uploads/{{ media.path }}" class="thumb"></td>
 						<td><a href="javascipt:;" ng-click="delete(media.id)">Delete</a></td>
 					</tr>
 				</tbody>

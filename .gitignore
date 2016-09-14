@@ -34,3 +34,4 @@ phpunit.phar
 
 # upload directory
 /uploads
+/frontend/web/uploads

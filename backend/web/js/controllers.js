@@ -121,10 +121,53 @@ controllers.controller('SliderController', ['$scope', '$http', '$routeParams',
 controllers.controller('MediaController', ['$scope', '$http',
     function($scope, $http) {
         $scope.api = 'index.php?r=api/media';
+        $scope.uploadMessage = '';
 
-        $http.get($scope.api).success(function(data) {
-            $scope.data = data;
-        });
+        $scope.loadMedias = function() {
+            $http.get($scope.api).success(function(data) {
+                $scope.data = data;
+            });
+        };
+
+        $scope.loadMedias();
+
+        $scope.uploadFile = function() {
+            var file = $scope.mediaFile,
+                fd = new FormData();
+
+            if (angular.isUndefined(file)) return;
+
+            $scope.uploadMessage = '';
+
+            fd.append('file', file);
+
+            $http.post($scope.api, fd, {
+                transformRequest: angular.identity,
+                headers: {'Content-Type': undefined}
+            }).success(function(msg) {
+                if (msg.status) {
+                    $scope.loadMedias();
+                } else {
+                    $scope.uploadMessage = msg.message;
+                }
+            }).error(function(msg) {
+                angular.forEach(msg, function(val, key) {
+                    if (val.field == 'file') $scope.uploadMessage = val.message;
+                });
+            });
+        };
+
+        $scope.delete = function(id) {
+            if (confirm('Sure?')) {
+                $http.post($scope.api + '/delete', {
+                    id: id
+                }).success(function(msg) {
+                    if (msg.status) $scope.loadMedias();
+                }).error(function(msg) {
+                    
+                })
+            }
+        }
     }
 ]);
 
